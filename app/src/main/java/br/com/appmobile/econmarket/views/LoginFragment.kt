@@ -49,6 +49,7 @@ class LoginFragment : Fragment() {
 
                     Toast.makeText(context, R.string.user_found, Toast.LENGTH_LONG).show()
                 }
+                view.fragment_login_progressBar.visibility = View.GONE
             })
         })
 
