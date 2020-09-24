@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import models.User
+import repository.Repository
 
 class RegisterViewModel: ViewModel() {
 
@@ -16,7 +17,6 @@ class RegisterViewModel: ViewModel() {
 
     fun registerUser(email: String, password: String){
 
-        val newUser = User(email, password)
-        this.user.value = newUser
+        this.user.value = Repository.getRepository().register(email, password)
     }
 }
