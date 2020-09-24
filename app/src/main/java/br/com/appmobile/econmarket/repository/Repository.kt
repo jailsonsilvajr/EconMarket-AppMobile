@@ -1,5 +1,6 @@
 package br.com.appmobile.econmarket.repository
 
+import br.com.appmobile.econmarket.models.List
 import br.com.appmobile.econmarket.models.User
 
 class Repository {
@@ -32,5 +33,17 @@ class Repository {
             return user
         }
         return user
+    }
+
+    fun createAndSaveNewList(name: String): List?{
+
+        val list = List.validateAndCreateList(name)
+        //verificar se list é válido
+        if(list != null){
+            //salvar list no database
+            //Se ok: return list do database
+            return list
+        }
+        return list
     }
 }
