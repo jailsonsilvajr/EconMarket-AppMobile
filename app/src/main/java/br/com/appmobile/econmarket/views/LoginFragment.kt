@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import br.com.appmobile.econmarket.R
 import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_login.view.*
-import viewmodels.LoginViewModel
+import br.com.appmobile.econmarket.viewmodels.LoginViewModel
 
 class LoginFragment : Fragment() {
 

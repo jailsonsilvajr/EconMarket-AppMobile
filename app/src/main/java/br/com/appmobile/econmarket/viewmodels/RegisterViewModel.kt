@@ -1,10 +1,10 @@
-package viewmodels
+package br.com.appmobile.econmarket.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import models.User
-import repository.Repository
+import br.com.appmobile.econmarket.models.User
+import br.com.appmobile.econmarket.repository.Repository
 
 class RegisterViewModel: ViewModel() {
 

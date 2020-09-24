@@ -1,6 +1,6 @@
-package repository
+package br.com.appmobile.econmarket.repository
 
-import models.User
+import br.com.appmobile.econmarket.models.User
 
 class Repository {
 

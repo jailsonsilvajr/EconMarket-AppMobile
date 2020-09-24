@@ -10,7 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import br.com.appmobile.econmarket.R
 import kotlinx.android.synthetic.main.fragment_register.view.*
-import viewmodels.RegisterViewModel
+import br.com.appmobile.econmarket.viewmodels.RegisterViewModel
 
 class RegisterFragment : Fragment() {
 

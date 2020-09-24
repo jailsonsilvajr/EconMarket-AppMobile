@@ -1,4 +1,4 @@
-package models
+package br.com.appmobile.econmarket.models
 
 class User(){
 
