@@ -46,4 +46,14 @@ class Repository {
         }
         return list
     }
+
+    fun loadList(): MutableList<List>{
+
+        var lists = mutableListOf<List>()
+        for (i in 1..20){
+
+            List.validateAndCreateList("List - $i")?.let { lists.add(it) }
+        }
+        return lists
+    }
 }

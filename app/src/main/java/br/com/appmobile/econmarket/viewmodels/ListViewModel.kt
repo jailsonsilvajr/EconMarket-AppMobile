@@ -9,14 +9,14 @@ import br.com.appmobile.econmarket.repository.Repository
 class ListViewModel: ViewModel() {
 
     private val newList: MutableLiveData<List> by lazy { MutableLiveData<List>() }
-    private val arrayList: MutableLiveData<kotlin.collections.List<List>> by lazy { MutableLiveData<kotlin.collections.List<List>>() }
+    private val arrayList: MutableLiveData<MutableList<List>> by lazy { MutableLiveData<MutableList<List>>() }
 
     fun observerNewList(): LiveData<List>{
 
         return newList
     }
 
-    fun observerArrayList(): LiveData<kotlin.collections.List<List>>{
+    fun observerArrayList(): LiveData<MutableList<List>>{
 
         return arrayList
     }
@@ -28,6 +28,6 @@ class ListViewModel: ViewModel() {
 
     fun loadArrayList(){
 
-        
+        arrayList.value = Repository.getRepository().loadList()
     }
 }

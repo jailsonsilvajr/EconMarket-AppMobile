@@ -1,5 +1,6 @@
 package br.com.appmobile.econmarket.views
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -48,6 +49,8 @@ class LoginFragment : Fragment() {
                 }else{
 
                     Toast.makeText(context, R.string.user_found, Toast.LENGTH_LONG).show()
+                    val intent = Intent(context, ListsActivity::class.java)
+                    startActivity(intent)
                 }
                 view.fragment_login_progressBar.visibility = View.GONE
             })
