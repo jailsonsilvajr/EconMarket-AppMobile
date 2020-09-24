@@ -1,13 +1,13 @@
 package br.com.appmobile.econmarket.models
 
-class User(){
+class User{
 
     lateinit var email: String
     lateinit var password: String
 
     companion object{
 
-        fun createNewUser(email: String, password: String): User?{
+        fun validateAndCreateUser(email: String, password: String): User?{
 
             if(email.isEmpty() || password.isEmpty()){
 

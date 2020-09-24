@@ -11,7 +11,7 @@ class Repository {
 
     fun login(email: String, password: String): User?{
 
-        val user = User.createNewUser(email, password)
+        val user = User.validateAndCreateUser(email, password)
         //verificar se user é válido
         if(user != null){
             //verificar se email e password estão corretos no database
@@ -24,7 +24,7 @@ class Repository {
 
     fun register(email: String, password: String): User?{
 
-        val user = User.createNewUser(email, password)
+        val user = User.validateAndCreateUser(email, password)
         //verificar se user é válido
         if(user != null){
             //criar user no database
