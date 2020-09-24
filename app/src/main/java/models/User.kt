@@ -1,7 +1,24 @@
 package models
 
-class User(email: String, password: String){
+class User(){
 
-    var email = email
-    var password = password
+    lateinit var email: String
+    lateinit var password: String
+
+    companion object{
+
+        fun createNewUser(email: String, password: String): User?{
+
+            if(email.isEmpty() || password.isEmpty()){
+
+                return null
+            }else{
+
+                val newUser = User()
+                newUser.email = email
+                newUser.password = password
+                return newUser
+            }
+        }
+    }
 }

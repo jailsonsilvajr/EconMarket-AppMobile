@@ -9,13 +9,28 @@ class Repository {
         fun getRepository(): Repository = Repository()
     }
 
-    fun login(email: String, password: String): User{
+    fun login(email: String, password: String): User?{
 
-        return User(email, password)
+        val user = User.createNewUser(email, password)
+        //verificar se user é válido
+        if(user != null){
+            //verificar se email e password estão corretos no database
+            //Se ok: return user do database
+            return user
+        }
+
+        return user
     }
 
-    fun register(email: String, password: String): User{
+    fun register(email: String, password: String): User?{
 
-        return User(email, password)
+        val user = User.createNewUser(email, password)
+        //verificar se user é válido
+        if(user != null){
+            //criar user no database
+            //Se ok: return user do database
+            return user
+        }
+        return user
     }
 }
