@@ -1,4 +1,4 @@
-package br.com.appmobile.econmarket.views
+package br.com.appmobile.econmarket.views.loginandregister
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

@@ -1,4 +1,4 @@
-package br.com.appmobile.econmarket.views
+package br.com.appmobile.econmarket.views.loginandregister
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -13,7 +13,9 @@ class LoginAndRegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login_and_register)
 
-        this.fragmentTransaction.add(R.id.layout_login_and_register_framelayout, LoginFragment())
+        this.fragmentTransaction.add(R.id.layout_login_and_register_framelayout,
+            LoginFragment()
+        )
         this.fragmentTransaction.commit()
     }
 }

@@ -1,4 +1,4 @@
-package br.com.appmobile.econmarket.views
+package br.com.appmobile.econmarket.views.lists
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -30,7 +30,7 @@ class ShowListsFragment : Fragment() {
         val view: View = inflater.inflate(R.layout.fragment_show_lists, container, false)
 
         this.listViewModel = ViewModelProvider(this).get(ListViewModel::class.java)
-        this.listViewModel.observerArrayList().observe(this, Observer {
+        this.listViewModel.observerLists().observe(this, Observer {
 
             this.lists = it
             view.layout_show_lists_recyclerView.adapter = AdapterLists(this.lists)
@@ -40,6 +40,13 @@ class ShowListsFragment : Fragment() {
         this.layoutManager = LinearLayoutManager(context)
         view.layout_show_lists_recyclerView.layoutManager = this.layoutManager
 
+        //FloatingAction
+        view.layout_show_lists_floatingActionButton.setOnClickListener {
+
+            fragmentManager?.beginTransaction()?.addToBackStack(null)
+                ?.replace(R.id.layout_lists_framelayout, AddListFragment())
+                ?.commit()
+        }
         return view
     }
 
@@ -54,7 +61,9 @@ class ShowListsFragment : Fragment() {
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderLists {
 
             val view = LayoutInflater.from(parent.context).inflate(R.layout.layout_show_lists_item, parent, false)
-            return ViewHolderLists(view)
+            return ViewHolderLists(
+                view
+            )
         }
 
         override fun onBindViewHolder(holder: ViewHolderLists, position: Int) {

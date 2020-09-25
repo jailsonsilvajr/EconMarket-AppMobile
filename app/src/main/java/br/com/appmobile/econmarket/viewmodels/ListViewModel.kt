@@ -8,26 +8,15 @@ import br.com.appmobile.econmarket.repository.Repository
 
 class ListViewModel: ViewModel() {
 
-    private val newList: MutableLiveData<List> by lazy { MutableLiveData<List>() }
-    private val arrayList: MutableLiveData<MutableList<List>> by lazy { MutableLiveData<MutableList<List>>() }
+    private val lists: MutableLiveData<MutableList<List>> by lazy { MutableLiveData<MutableList<List>>() }
 
-    fun observerNewList(): LiveData<List>{
+    fun observerLists(): LiveData<MutableList<List>>{
 
-        return newList
-    }
-
-    fun observerArrayList(): LiveData<MutableList<List>>{
-
-        return arrayList
-    }
-
-    fun createNewList(name: String){
-
-        newList.value = Repository.getRepository().createAndSaveNewList(name)
+        return lists
     }
 
     fun loadArrayList(){
 
-        arrayList.value = Repository.getRepository().loadList()
+        lists.value = Repository.getRepository().loadLists()
     }
 }

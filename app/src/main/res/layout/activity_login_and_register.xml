@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.LoginAndRegisterActivity">
+    tools:context=".views.loginandregister.LoginAndRegisterActivity">
 
     <FrameLayout
         android:id="@+id/layout_login_and_register_framelayout"

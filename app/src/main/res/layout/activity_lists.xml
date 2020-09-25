@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.ListsActivity">
+    tools:context=".views.lists.ListsActivity">
 
     <FrameLayout
         android:id="@+id/layout_lists_framelayout"

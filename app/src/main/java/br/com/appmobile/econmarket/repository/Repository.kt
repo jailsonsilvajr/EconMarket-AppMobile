@@ -47,7 +47,7 @@ class Repository {
         return list
     }
 
-    fun loadList(): MutableList<List>{
+    fun loadLists(): MutableList<List>{
 
         var lists = mutableListOf<List>()
         for (i in 1..20){

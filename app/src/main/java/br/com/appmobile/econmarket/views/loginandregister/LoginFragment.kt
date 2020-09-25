@@ -1,4 +1,4 @@
-package br.com.appmobile.econmarket.views
+package br.com.appmobile.econmarket.views.loginandregister
 
 import android.content.Intent
 import android.os.Bundle
@@ -13,6 +13,7 @@ import br.com.appmobile.econmarket.R
 import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_login.view.*
 import br.com.appmobile.econmarket.viewmodels.LoginViewModel
+import br.com.appmobile.econmarket.views.lists.ListsActivity
 
 class LoginFragment : Fragment() {
 

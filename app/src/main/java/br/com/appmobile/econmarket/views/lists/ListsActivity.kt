@@ -1,4 +1,4 @@
-package br.com.appmobile.econmarket.views
+package br.com.appmobile.econmarket.views.lists
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,7 +10,9 @@ class ListsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_lists)
 
         this.supportFragmentManager.beginTransaction()
-            .add(R.id.layout_lists_framelayout, ShowListsFragment())
+            .add(R.id.layout_lists_framelayout,
+                ShowListsFragment()
+            )
             .commit()
     }
 }
