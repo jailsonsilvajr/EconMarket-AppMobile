@@ -8,18 +8,15 @@ import br.com.appmobile.econmarket.repository.Repository
 
 class LoginViewModel: ViewModel() {
 
-    private val user: MutableLiveData<User> by lazy {
+    private val loginUserMutableLiveData: MutableLiveData<User> = MutableLiveData()
 
-        MutableLiveData<User>()
+    fun observerLoginUser(): LiveData<User> {
+
+        return loginUserMutableLiveData
     }
 
-    fun getUser(): LiveData<User> {
+    fun login(email: String, password: String){
 
-        return user
-    }
-
-    fun loadUser(email: String, password: String){
-
-        this.user.value = Repository.getRepository().login(email, password)
+        Repository.getRepository().login(email, password, this.loginUserMutableLiveData)
     }
 }

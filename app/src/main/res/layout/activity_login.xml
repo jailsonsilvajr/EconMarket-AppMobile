@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".views.loginandregister.LoginFragment">
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.LoginActivity">
 
     <TextView
-        android:id="@+id/fragment_login_text_login"
+        android:id="@+id/layout_login_text_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/fragment_login_text_input_layout_email"
+        android:id="@+id/layout_login_text_input_layout_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -28,10 +28,10 @@
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fragment_login_text_login">
+        app:layout_constraintTop_toBottomOf="@id/layout_login_text_login">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/fragment_login_text_input_edit_text_email"
+            android:id="@+id/layout_login_text_input_edit_text_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/email"
@@ -39,7 +39,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/fragment_login_text_input_layout_password"
+        android:id="@+id/layout_login_text_input_layout_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -47,10 +47,10 @@
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fragment_login_text_input_layout_email">
+        app:layout_constraintTop_toBottomOf="@id/layout_login_text_input_layout_email">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/fragment_login_text_input_edit_text_password"
+            android:id="@+id/layout_login_text_input_edit_text_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/password"
@@ -65,7 +65,7 @@
         android:text="@string/login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fragment_login_text_input_layout_password" />
+        app:layout_constraintTop_toBottomOf="@id/layout_login_text_input_layout_password" />
 
     <Button
         android:id="@+id/register_button"
@@ -78,7 +78,7 @@
         app:layout_constraintTop_toBottomOf="@id/login_button" />
 
     <ProgressBar
-        android:id="@+id/fragment_login_progressBar"
+        android:id="@+id/layout_login_progressBar"
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

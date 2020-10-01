@@ -1,17 +1,14 @@
 package br.com.appmobile.econmarket.models
 
-class List {
+import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
-    lateinit var name: String
+class List(name: String): Serializable {
 
-    companion object{
-
-        fun validateAndCreateList(name: String): List?{
-
-            if(name.isEmpty()) return null
-            val newList = List()
-            newList.name = name
-            return newList
-        }
-    }
+    @SerializedName("id")
+    var id: Long = 0
+    @SerializedName("name")
+    var name: String = name
+    @SerializedName("items")
+    var items = mutableListOf<Item>()
 }

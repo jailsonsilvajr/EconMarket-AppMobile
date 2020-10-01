@@ -1,24 +1,33 @@
 package br.com.appmobile.econmarket.models
 
-class User{
+import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
-    lateinit var email: String
-    lateinit var password: String
+class User(email: String, password: String, name: String): Serializable{
+
+    @SerializedName("id")
+    var id: Long = 0
+
+    @SerializedName("email")
+    var email: String = email
+
+    @SerializedName("password")
+    var password: String = password
+
+    @SerializedName("name")
+    var name: String = name
+
+    @SerializedName("lists")
+    var lists = mutableListOf<List>()
 
     companion object{
 
-        fun validateAndCreateUser(email: String, password: String): User?{
+        fun getCopy(user: User): User{
 
-            if(email.isEmpty() || password.isEmpty()){
-
-                return null
-            }else{
-
-                val newUser = User()
-                newUser.email = email
-                newUser.password = password
-                return newUser
-            }
+            val userCopy = User(user.email, user.password, user.name)
+            userCopy.id = user.id
+            userCopy.lists = user.lists
+            return userCopy
         }
     }
 }

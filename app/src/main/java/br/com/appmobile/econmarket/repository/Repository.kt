@@ -1,59 +1,102 @@
 package br.com.appmobile.econmarket.repository
 
+import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import br.com.appmobile.econmarket.models.List
 import br.com.appmobile.econmarket.models.User
+import br.com.appmobile.econmarket.network.requestbodys.RequestBodyList
+import br.com.appmobile.econmarket.network.requestbodys.RequestBodyUser
+import br.com.appmobile.econmarket.network.retrofit2.Retrofit2Instance
+import br.com.appmobile.econmarket.network.retrofit2.Retrofit2Service
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class Repository {
 
     companion object{
 
         fun getRepository(): Repository = Repository()
+        private fun getService(): Retrofit2Service = Retrofit2Instance.getRetrofit2Instance().create(Retrofit2Service::class.java)
     }
 
-    fun login(email: String, password: String): User?{
+    fun login(email: String, password: String, mutableLiveData: MutableLiveData<User>){
 
-        val user = User.validateAndCreateUser(email, password)
-        //verificar se user é válido
-        if(user != null){
-            //verificar se email e password estão corretos no database
-            //Se ok: return user do database
-            return user
-        }
+        val call = getService().login(email, password)
+        call.enqueue(object : Callback<User> {
 
-        return user
+            override fun onResponse(call: Call<User>, response: Response<User>) {
+
+                if(response.isSuccessful){
+
+                    mutableLiveData.value = response.body()
+                }else{
+
+                    mutableLiveData.value = null
+                }
+            }
+
+            override fun onFailure(call: Call<User>, t: Throwable) {
+
+
+            }
+        })
     }
 
-    fun register(email: String, password: String): User?{
+    fun register(name: String, email: String, password: String, mutableLiveData: MutableLiveData<User>){
 
-        val user = User.validateAndCreateUser(email, password)
-        //verificar se user é válido
-        if(user != null){
-            //criar user no database
-            //Se ok: return user do database
-            return user
-        }
-        return user
+        val newUser = User(email, password, name)
+        val requestBodyPostUser = RequestBodyUser(newUser)
+        val call = getService().register(requestBodyPostUser)
+        call.enqueue(object : Callback<User>{
+
+            override fun onResponse(call: Call<User>, response: Response<User>) {
+
+                if(response.isSuccessful) mutableLiveData.value = response.body()
+                else mutableLiveData.value = null
+            }
+
+            override fun onFailure(call: Call<User>, t: Throwable) {
+
+            }
+        })
     }
 
-    fun createAndSaveNewList(name: String): List?{
+    fun updateUser(user: User, mutableLiveData: MutableLiveData<User>){
 
-        val list = List.validateAndCreateList(name)
-        //verificar se list é válido
-        if(list != null){
-            //salvar list no database
-            //Se ok: return list do database
-            return list
-        }
-        return list
+        val requestBodyUser = RequestBodyUser(user)
+        val call = getService().updateUser(requestBodyUser)
+        call.enqueue(object : Callback<User>{
+
+            override fun onResponse(call: Call<User>, response: Response<User>) {
+
+                if(response.isSuccessful) mutableLiveData.value = response.body()
+                else mutableLiveData.value = null
+            }
+
+            override fun onFailure(call: Call<User>, t: Throwable) {
+
+                Log.d(Repository.toString(), t.message.toString())
+            }
+        })
     }
 
-    fun loadLists(): MutableList<List>{
+    fun addList(name: String, user: User, mutableLiveData: MutableLiveData<List>){
 
-        var lists = mutableListOf<List>()
-        for (i in 1..20){
+        val newList = List(name)
+        val requestBodyPostList = RequestBodyList(newList, user)
+        val call = getService().addList(requestBodyPostList)
+        call.enqueue(object : Callback<List>{
 
-            List.validateAndCreateList("List - $i")?.let { lists.add(it) }
-        }
-        return lists
+            override fun onResponse(call: Call<List>, response: Response<List>) {
+
+                if(response.isSuccessful) mutableLiveData.value = response.body()
+                else mutableLiveData.value = null
+            }
+
+            override fun onFailure(call: Call<List>, t: Throwable) {
+
+            }
+        })
     }
 }
