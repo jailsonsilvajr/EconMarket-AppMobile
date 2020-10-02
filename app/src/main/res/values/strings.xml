@@ -13,4 +13,6 @@
     <string name="lista_add_fail">Não foi possível adicionar a lista.</string>
     <string name="name">Nome</string>
     <string name="save">Salvar</string>
+    <string name="edit">Editar</string>
+    <string name="delete">Deletar</string>
 </resources>

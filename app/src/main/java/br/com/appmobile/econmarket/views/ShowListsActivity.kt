@@ -2,12 +2,13 @@ package br.com.appmobile.econmarket.views
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,6 +16,9 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.appmobile.econmarket.R
 import br.com.appmobile.econmarket.models.List
 import br.com.appmobile.econmarket.models.User
+import br.com.appmobile.econmarket.swipe.button.ButtonSwipe
+import br.com.appmobile.econmarket.swipe.helper.SwipeHelper
+import br.com.appmobile.econmarket.swipe.listener.ButtonSwipeClickListener
 import br.com.appmobile.econmarket.viewmodels.ShowListsViewModel
 import kotlinx.android.synthetic.main.activity_show_lists.*
 import kotlinx.android.synthetic.main.layout_show_lists_item.view.*
@@ -42,6 +46,43 @@ class ShowListsActivity : AppCompatActivity() {
             AdapterLists(
                 it
             )
+        }
+
+        //AddSwipe
+        val swipe = object : SwipeHelper(this, layout_show_lists_recyclerView, 200){
+
+            override fun instantiateMyButton(
+                viewHolder: RecyclerView.ViewHolder,
+                buffer: MutableList<ButtonSwipe>
+            ) {
+
+                //Add Button
+                buffer.add(
+                    ButtonSwipe(this@ShowListsActivity,
+                        getString(R.string.delete),
+                        35,
+                        0,
+                        Color.parseColor("#FF3C30"),
+                        object : ButtonSwipeClickListener{
+                            override fun onClick(position: Int) {
+                                Toast.makeText(this@ShowListsActivity, "DELETAR ID: " + position, Toast.LENGTH_LONG).show()
+                            }
+                        })
+                )
+
+                buffer.add(
+                    ButtonSwipe(this@ShowListsActivity,
+                        getString(R.string.edit),
+                        35,
+                        0,
+                        Color.parseColor("#FF9502"),
+                        object : ButtonSwipeClickListener{
+                            override fun onClick(position: Int) {
+                                Toast.makeText(this@ShowListsActivity, "EDITAR ID: " + position, Toast.LENGTH_LONG).show()
+                            }
+                        })
+                )
+            }
         }
 
         //FloatingAction
